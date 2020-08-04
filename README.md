@@ -1,4 +1,4 @@
-# DiscordDrive Firmwares
+# DiscordDrive Firmware
 
 DiscordDrive is an open-source brushless motor driver with FOC control.
 
