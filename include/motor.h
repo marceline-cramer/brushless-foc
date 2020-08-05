@@ -10,7 +10,15 @@
 typedef struct motor_state
 {
     /* PWM outputs */
-    struct device *poles[3];
+    struct Pole
+    {
+        const char* pin_name;
+        const char* dev_name;
+
+        uint32_t pin;
+        uint32_t flags;
+        struct device* dev;
+    } poles[3];
 
     /* encoder info */
     int32_t encoder_position;

@@ -1,13 +1,17 @@
+#include <sys/printk.h>
+
 #include "global_state.h"
 
-void main()
-{
-	/* create global state */
-	struct global_state state;
+struct global_state state;
 
-    /* initialize motors */ 
+void main(void)
+{
+	printk("Hello DiscordDrive!\nRunning on board %s\n", CONFIG_BOARD);
+
+    /* initialize motors */
 	for(int i = 0; i < MOTOR_NUM; i++)
 	{
+		printk("Initializing motor %d\n", i);
 		motor_start(&state.motors[i]);
 	}
 
