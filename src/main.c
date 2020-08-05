@@ -8,7 +8,7 @@ void main(void)
 {
 	printk("Hello DiscordDrive!\nRunning on board %s\n", CONFIG_BOARD);
 
-    /* initialize motors */
+	/* initialize motors */
 	for(int i = 0; i < MOTOR_NUM; i++)
 	{
 		printk("Initializing motor %d\n", i);
