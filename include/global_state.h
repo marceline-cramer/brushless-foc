@@ -14,8 +14,8 @@ typedef struct global_state
     struct motor_state motors[MOTOR_NUM];
 
     /* interfacing states */
-    struct uart_interface uart_client;
-    struct spi_interface spi_client;
-    struct i2c_interface i2c_client;
-    struct can_interface can_client;
+    struct uart_interface uart;
+    struct spi_interface spi;
+    struct i2c_interface i2c;
+    struct can_interface can;
 } global_state;

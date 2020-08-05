@@ -12,8 +12,8 @@ void main()
 	}
 
 	/* initialize interfaces */
-	// uart_start(&state.uart_client);
-	// spi_start(&state.spi_client);
-	// i2c_start(&state.i2c_client);
-	// can_start(&state.can_client);
+	uart_start(&state.uart);
+	spi_start(&state.spi);
+	i2c_start(&state.i2c);
+	can_start(&state.can);
 }
