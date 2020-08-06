@@ -1,5 +1,7 @@
 #pragma once
 
+#define UNIVERSAL_LOG_LEVEL LOG_LEVEL_DBG
+
 #define MOTOR_NUM 1
 
 #define FOC_STACK_SIZE 500
