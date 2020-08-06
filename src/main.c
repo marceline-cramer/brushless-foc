@@ -16,7 +16,7 @@ void main(void)
 	}
 
 	/* initialize interfaces */
-	uart_start(&state.uart);
+	uart_start(&state.uart, state.motors);
 	spi_start(&state.spi);
 	i2c_start(&state.i2c);
 	can_start(&state.can);
