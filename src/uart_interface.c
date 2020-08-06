@@ -32,25 +32,25 @@ void uart_interrupt(void* uart_ptr)
         if(uart_irq_tx_ready(uart->dev))
         {
             uint8_t buffer[UART_IRQ_BUF_SIZE];
-			int rb_len, send_len;
+            int rb_len, send_len;
 
             /* grab message from ring buffer */
             k_mutex_lock(&uart->tx.in_use, K_FOREVER);
-			rb_len = ring_buf_get(&uart->tx.ring_buf, buffer, UART_IRQ_BUF_SIZE);
+            rb_len = ring_buf_get(&uart->tx.ring_buf, buffer, UART_IRQ_BUF_SIZE);
             k_mutex_unlock(&uart->tx.in_use);
 
-			if (!rb_len) {
-				LOG_DBG("Ring buffer empty, disable TX IRQ");
-				uart_irq_tx_disable(uart->dev);
-				continue;
-			}
+            if (!rb_len) {
+                LOG_DBG("Ring buffer empty, disable TX IRQ");
+                uart_irq_tx_disable(uart->dev);
+                continue;
+            }
 
-			send_len = uart_fifo_fill(uart->dev, buffer, rb_len);
-			if (send_len < rb_len) {
-				LOG_ERR("Drop %d bytes", rb_len - send_len);
-			}
+            send_len = uart_fifo_fill(uart->dev, buffer, rb_len);
+            if (send_len < rb_len) {
+                LOG_ERR("Drop %d bytes", rb_len - send_len);
+            }
 
-			LOG_DBG("ringbuf -> tty fifo %d bytes", send_len);
+            LOG_DBG("ringbuf -> tty fifo %d bytes", send_len);
         }
     }
 }
